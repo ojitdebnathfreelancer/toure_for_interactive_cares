@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  vertical-align: middle;
+}
+
+.banner {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(110, 15, 90, 0.4),
+      rgba(0, 0, 0, 0.3)
+    ),
+    url("./assets/banner/bannerImage.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.destination {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(110, 15, 90, 0.4),
+      rgba(0, 0, 0, 0.3)
+    ),
+    url("./assets//search-destination/beatch.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
