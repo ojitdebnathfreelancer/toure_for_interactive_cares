@@ -1,4 +1,7 @@
 import Banner from "../../components/Banner/Banner";
+import FeaturedTours from "../../components/FeaturedTours/FeaturedTours";
+import Testimonials from "../../components/Testimonials/Testimonials";
+
 import MainLayout from "../../layout/MainLayout";
 
 const Home = () => {
@@ -6,6 +9,8 @@ const Home = () => {
     <>
       <MainLayout>
         <Banner />
+        <Testimonials />
+        <FeaturedTours />
       </MainLayout>
     </>
   );

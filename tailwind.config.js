@@ -14,6 +14,7 @@ export default {
         gray: "#EFF4FB",
         gra2: "#c8d6e5",
         danger: "#e74c3c",
+        "black-opacity": "rgba(0,0,0, 0.5)",
       },
     },
   },

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { FaRegUser } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const LoginButton = ({ setIsDestination }) => {
   return (
@@ -8,10 +9,10 @@ const LoginButton = ({ setIsDestination }) => {
       <button type="button" onClick={() => setIsDestination(true)}>
         <FiSearch size={22} />
       </button>
-      <button type="button" className="flex items-center gap-x-2">
+      <Link to="/login" className="flex items-center gap-x-2">
         <FaRegUser size={22} />
         <span className="font-semibold">Login / Signup</span>
-      </button>
+      </Link>
     </div>
   );
 };

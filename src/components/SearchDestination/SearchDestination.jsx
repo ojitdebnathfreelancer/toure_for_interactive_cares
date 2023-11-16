@@ -1,21 +1,44 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 const SearchDestination = ({ setIsDestination }) => {
   const [query, setQuery] = useState("");
+  const navigate = useNavigate();
   const handelSubmit = (e) => {
     e.preventDefault();
     setQuery(e.target.destination.value);
   };
 
-  console.log(query);
+  useEffect(() => {
+    if (query) {
+      searchPlace();
+    }
+  }, [query]);
+
+  const searchPlace = () => {
+    fetch("/data.json")
+      .then((res) => res.json())
+      .then((data) => {
+        const destination = data.find((d) => d.place.includes(query));
+
+        if (destination?.id) {
+          setIsDestination(false);
+          navigate(`/details/${destination?.id}`);
+          setQuery("");
+        } else {
+          navigate(`/`);
+        }
+      });
+  };
 
   return (
-    <div className="h-32 bg-primary py-5 destination min-h-[89vh]">
-      <div className="max-w-7xl mx-auto flex justify-between">
-        <div className="bg-white w-[40%] py-4 px-10 box-border rounded-md mt-32">
+    <div className="bg-primary py-5 destination min-h-[89vh]">
+      <div className="max-w-7xl mx-auto flex justify-between xl:px-0 md:px-5">
+        <div className="bg-white lg:w-[40%] py-4 px-10 box-border rounded-md mt-32">
           <h1 className="text-black text-4xl font-semibold">
             Search The Visit London
           </h1>
@@ -45,13 +68,13 @@ const SearchDestination = ({ setIsDestination }) => {
                 <button
                   type="button"
                   className="flex items-center gap-x-2 group text-orange-400 font-semibold"
-                  onClick={() => setQuery("Tower of London")}
+                  onClick={() => setQuery("Lake District")}
                 >
                   <FaArrowRightLong
                     size={30}
                     className="group-hover:bg-orange-400 p-2 rounded-full duration-500 group-hover:text-white text-orange-400"
                   />
-                  Tower of London
+                  Lake District
                 </button>
               </li>
 
@@ -59,13 +82,13 @@ const SearchDestination = ({ setIsDestination }) => {
                 <button
                   type="button"
                   className="flex items-center gap-x-2 group text-orange-400 font-semibold"
-                  onClick={() => setQuery("Tower Bridge")}
+                  onClick={() => setQuery("Loch Lomond")}
                 >
                   <FaArrowRightLong
                     size={30}
                     className="group-hover:bg-orange-400 p-2 rounded-full duration-500 group-hover:text-white text-orange-400"
                   />
-                  Tower Bridge
+                  Loch Lomond
                 </button>
               </li>
 
@@ -73,13 +96,13 @@ const SearchDestination = ({ setIsDestination }) => {
                 <button
                   type="button"
                   className="flex items-center gap-x-2 group text-orange-400 font-semibold"
-                  onClick={() => setQuery("Buckingham Palace")}
+                  onClick={() => setQuery("Snowdonia")}
                 >
                   <FaArrowRightLong
                     size={30}
                     className="group-hover:bg-orange-400 p-2 rounded-full duration-500 group-hover:text-white text-orange-400"
                   />
-                  Buckingham Palace
+                  Snowdonia
                 </button>
               </li>
             </ul>
