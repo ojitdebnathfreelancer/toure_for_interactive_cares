@@ -19,7 +19,7 @@ const Details = () => {
   useEffect(() => {
     setTimeout(() => {
       setShowModal(true);
-    }, 2000);
+    }, 3000);
   }, []);
 
   return (

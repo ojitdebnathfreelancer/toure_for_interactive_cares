@@ -1,10 +1,21 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { MdOutlineVideoSettings } from "react-icons/md";
 
 /* eslint-disable react/no-unescaped-entities */
 const SingleDetails = () => {
   const [data, setData] = useState({});
   const { id } = useParams();
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openPopup = () => {
+    setIsOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsOpen(false);
+  };
 
   useEffect(() => {
     fetch("/data.json")
@@ -20,7 +31,35 @@ const SingleDetails = () => {
       {data.id ? (
         <section className="grid lg:grid-cols-3 gap-10 my-10 max-w-7xl mx-auto lg:px-0 px-4">
           <div className="lg:col-span-2">
-            <img className="w-full" src={data?.image} alt="image" />
+            <div className="relative">
+              <img className="w-full" src={data?.image} alt="image" />
+              <div className="absolute inset-0 w-full h-full flex justify-center items-center">
+                <button
+                  className={`${isOpen ? "hidden" : "block"}`}
+                  onClick={openPopup}
+                >
+                  <MdOutlineVideoSettings size={40} />
+                </button>
+
+                {isOpen && (
+                  <div className="text-end">
+                    <span
+                      className="text-2xl cursor-pointer text-white"
+                      onClick={closePopup}
+                    >
+                      X
+                    </span>
+                    <iframe
+                      title="YouTube Video"
+                      width="700"
+                      height="400"
+                      src="https://www.youtube.com/embed/35npVaFGHMY?si=3yit4Prb6wXMchHY"
+                      allowFullScreen
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
             <div className="grid grid-cols-4 gap-4 my-6">
               {data.moreImage.map((image, index) => (
                 <img

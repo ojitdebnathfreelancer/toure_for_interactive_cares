@@ -1,4 +1,8 @@
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+
 const Registration = () => {
+  const navigate = useNavigate();
   const handleResister = (e) => {
     e.preventDefault();
     const username = e.target.username.value;
@@ -6,7 +10,20 @@ const Registration = () => {
     const password = e.target.email.value;
 
     const userData = { username, email, password };
-    console.log(userData);
+
+    fetch("https://reqres.in/api/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        localStorage.setItem("user", JSON.stringify(data));
+        toast.success("Successfully registered");
+        navigate("/");
+      });
   };
   return (
     <div className="w-full max-w-md shadow-xl rounded-lg m-auto border-2 -mt-10">
