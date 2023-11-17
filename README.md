@@ -14,4 +14,4 @@ This a react project that is image gallery.
 - Run project in browser for command - yarn dev
 
 Runs the live app in browser.\
-Open [netlify](https://venerable-puppy-72169b.netlify.app/) to view it in your browser.
+Open [netlify](https://65578fc51e274d43dcf92d78--brilliant-nougat-b3f225.netlify.app/) to view it in your browser.
