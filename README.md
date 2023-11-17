@@ -6,6 +6,10 @@ This a react project that is image gallery.
 
 - Vite + React
 - Javascript
+- React Router Dom
+- React Icon
+- React Hot Toast
+- Tailwind CSS
 
 ## How to run the project ?
 
