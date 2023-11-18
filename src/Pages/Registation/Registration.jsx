@@ -6,7 +6,7 @@ import { AuthContext } from "../../context/ContextProvider";
 const Registration = () => {
   const navigate = useNavigate();
   const { createUser, isLoading, updateUserProfile } = useContext(AuthContext);
-  const bookId = JSON.parse(localStorage.getItem("bookId")) ?? null;
+  const bookId = JSON.parse(localStorage.getItem("bookingData")) ?? null;
 
   const handleResister = (e) => {
     e.preventDefault();
@@ -19,8 +19,7 @@ const Registration = () => {
         updateUserProfile(username).then(() => {
           toast.success("Successfully registered");
           if (bookId) {
-            navigate(`/details/${bookId}`);
-            localStorage.removeItem("bookId");
+            navigate(`/details/${bookId.id}`);
           } else {
             navigate("/");
           }

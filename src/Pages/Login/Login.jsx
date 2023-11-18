@@ -6,7 +6,7 @@ import { AuthContext } from "../../context/ContextProvider";
 const Login = () => {
   const navigate = useNavigate();
   const { loginUser } = useContext(AuthContext);
-  const bookId = JSON.parse(localStorage.getItem("bookId")) ?? null;
+  const bookId = JSON.parse(localStorage.getItem("bookingData")) ?? null;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,8 +17,7 @@ const Login = () => {
       .then(() => {
         toast.success("Successfully Login");
         if (bookId) {
-          navigate(`/details/${bookId}`);
-          localStorage.removeItem("bookId");
+          navigate(`/details/${bookId.id}`);
         } else {
           navigate("/");
         }

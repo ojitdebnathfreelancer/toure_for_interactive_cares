@@ -5,6 +5,8 @@ import { AuthContext } from "../../context/ContextProvider";
 
 // eslint-disable-next-line react/prop-types
 const BookingModal = ({ setShowModal }) => {
+  const defaultData = JSON.parse(localStorage.getItem("bookingData")) ?? {};
+
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const { id } = useParams();
@@ -16,14 +18,19 @@ const BookingModal = ({ setShowModal }) => {
     const destination = e.target.destination.value;
     const date = e.target.date.value;
 
+    const bookData = { name, email, phone, destination, date };
+
     if (!user?.email) {
-      localStorage.setItem("bookId", JSON.stringify(id));
+      localStorage.setItem(
+        "bookingData",
+        JSON.stringify({ id: id, ...bookData })
+      );
       navigate("/login");
       return toast.error("Please register before booking");
     }
 
-    const bookData = { name, email, phone, destination, date };
     setShowModal(false);
+    localStorage.removeItem("bookingData");
     localStorage.setItem("booked", JSON.stringify(bookData));
     toast.success("Successfully Booked");
   };
@@ -52,6 +59,7 @@ const BookingModal = ({ setShowModal }) => {
                     id="booking name"
                     type="text"
                     name="name"
+                    defaultValue={defaultData?.name}
                     placeholder="Enter Name"
                     required
                   />
@@ -66,6 +74,7 @@ const BookingModal = ({ setShowModal }) => {
                     id="booking email"
                     type="text"
                     name="email"
+                    defaultValue={defaultData?.email}
                     placeholder="Enter Email"
                     required
                   />
@@ -80,6 +89,7 @@ const BookingModal = ({ setShowModal }) => {
                     id="booking phone"
                     type="text"
                     name="phone"
+                    defaultValue={defaultData?.phone}
                     placeholder="Enter Phone"
                     required
                   />
@@ -94,6 +104,7 @@ const BookingModal = ({ setShowModal }) => {
                     id="booking destination"
                     type="text"
                     name="destination"
+                    defaultValue={defaultData?.destination}
                     placeholder="Enter Destination"
                   />
                 </div>
@@ -107,6 +118,7 @@ const BookingModal = ({ setShowModal }) => {
                     id="booking data"
                     type="date"
                     name="date"
+                    defaultValue={defaultData?.date}
                     placeholder="Enter Date"
                     required
                   />
