@@ -27,7 +27,8 @@ const BookingModal = ({ setShowModal }) => {
     <div className="bg-black-opacity z-[99999999] w-full fixed top-0 left-0">
       <div className="max-w-7xl mx-auto min-h-screen flex justify-center items-center">
         <div className="xl:w-[600px] md:w-[400px] w-[300px] bg-white p-5 rounded-md">
-          <div className="flex justify-end">
+          <div className="flex justify-between">
+            <h1 className="text-black text-2xl font-bold">Booking Now</h1>
             <button
               onClick={() => setShowModal(false)}
               className="text-end text-2xl font-bold"
@@ -35,7 +36,7 @@ const BookingModal = ({ setShowModal }) => {
               X
             </button>
           </div>
-          <div>
+          <div className="mt-5">
             <form onSubmit={handelSubmit}>
               <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
                 <div>
