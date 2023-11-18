@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../context/ContextProvider";
 
 // eslint-disable-next-line react/prop-types
 const BookingModal = ({ setShowModal }) => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const { id } = useParams();
   const handelSubmit = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -16,6 +17,7 @@ const BookingModal = ({ setShowModal }) => {
     const date = e.target.date.value;
 
     if (!user?.email) {
+      localStorage.setItem("bookId", JSON.stringify(id));
       navigate("/login");
       return toast.error("Please register before booking");
     }

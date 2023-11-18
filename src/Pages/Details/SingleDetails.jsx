@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { MdOutlineVideoSettings } from "react-icons/md";
+import { GoVideo } from "react-icons/go";
 
 /* eslint-disable react/no-unescaped-entities */
 const SingleDetails = () => {
@@ -38,7 +38,7 @@ const SingleDetails = () => {
                   className={`${isOpen ? "hidden" : "block"}`}
                   onClick={openPopup}
                 >
-                  <MdOutlineVideoSettings size={40} />
+                  <GoVideo size={40} />
                 </button>
 
                 {isOpen && (
