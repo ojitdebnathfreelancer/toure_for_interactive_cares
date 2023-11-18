@@ -1,6 +1,6 @@
-# Image Gallery
+# Tour
 
-This a react project that is image gallery.
+This a react project that is tour and booking destination website.
 
 ## Technologies:
 
@@ -10,6 +10,7 @@ This a react project that is image gallery.
 - React Icon
 - React Hot Toast
 - Tailwind CSS
+- Firebase
 
 ## How to run the project ?
 
