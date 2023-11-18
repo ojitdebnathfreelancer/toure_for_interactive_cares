@@ -1,28 +1,24 @@
+import { useContext } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/ContextProvider";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { loginUser } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    const userData = { email, password };
-
-    fetch("https://reqres.in/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        localStorage.setItem("user", JSON.stringify(data));
-        toast.success("Successfully login");
+    loginUser(email, password)
+      .then(() => {
+        toast.success("Successfully Login");
         navigate("/");
+      })
+      .catch((err) => {
+        toast.error(err.message);
       });
   };
   return (

@@ -1,28 +1,27 @@
+import { useContext } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/ContextProvider";
 
 const Registration = () => {
   const navigate = useNavigate();
+  const { createUser, isLoading, updateUserProfile } = useContext(AuthContext);
+
   const handleResister = (e) => {
     e.preventDefault();
     const username = e.target.username.value;
     const email = e.target.email.value;
-    const password = e.target.email.value;
+    const password = e.target.password.value;
 
-    const userData = { username, email, password };
-
-    fetch("https://reqres.in/api/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        localStorage.setItem("user", JSON.stringify(data));
-        toast.success("Successfully registered");
-        navigate("/");
+    createUser(email, password)
+      .then(() => {
+        updateUserProfile(username).then(() => {
+          toast.success("Successfully registered");
+          navigate("/");
+        });
+      })
+      .catch((err) => {
+        toast.error(err.message);
       });
   };
   return (
@@ -76,11 +75,12 @@ const Registration = () => {
         </div>
         <div className="flex items-center justify-between">
           <button
+            disabled={isLoading}
             className="bg-primary w-full text-white font-bold py-3 px-4 
             rounded duration-300 "
             type="submit"
           >
-            Register
+            {isLoading ? "Loading" : "Register"}
           </button>
         </div>
       </form>

@@ -1,18 +1,19 @@
 /* eslint-disable react/prop-types */
+import { useContext } from "react";
 import toast from "react-hot-toast";
 import { FaRegUser } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/ContextProvider";
 
 const LoginButton = ({ setIsDestination }) => {
-  const user = JSON.parse(localStorage.getItem("user")) ?? {};
-
+  const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const logoutUser = () => {
-    localStorage.removeItem("user");
+  const userLogout = () => {
+    logout();
     toast.success("Successfully Logout");
-    navigate("/");
+    navigate("/login");
   };
 
   return (
@@ -21,12 +22,19 @@ const LoginButton = ({ setIsDestination }) => {
         <FiSearch size={22} />
       </button>
 
-      {user?.id ? (
+      {user?.displayName && (
+        <span className="flex items-center gap-x-1">
+          <FaRegUser size={20} />
+          {user?.displayName}
+        </span>
+      )}
+
+      {user?.email ? (
         <button
           className="flex items-center gap-x-2"
-          onClick={() => logoutUser()}
+          onClick={() => userLogout()}
         >
-          <FaRegUser size={22} /> Logout
+          Logout
         </button>
       ) : (
         <Link to="/login" className="flex items-center gap-x-2">

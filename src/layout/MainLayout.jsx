@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const MainLayout = ({ children }) => {
   const [isDestination, setIsDestination] = useState(false);
-  console.log(isDestination);
+
   return (
     <div className="flex flex-col min-h-screen justify-between">
       <div>
