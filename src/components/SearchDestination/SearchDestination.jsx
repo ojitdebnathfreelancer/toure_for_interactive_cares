@@ -38,7 +38,7 @@ const SearchDestination = ({ setIsDestination }) => {
   return (
     <div className="bg-primary py-5 destination min-h-[89vh]">
       <div className="max-w-7xl mx-auto flex justify-between xl:px-0 md:px-5">
-        <div className="bg-white lg:w-[40%] py-4 px-10 box-border rounded-md mt-32">
+        <div className="bg-white lg:w-[40%] py-4 px-10 box-border rounded-md lg:mt-20 md:mt-32 mt-10">
           <h1 className="text-black text-4xl font-semibold">
             Search The Visit London
           </h1>

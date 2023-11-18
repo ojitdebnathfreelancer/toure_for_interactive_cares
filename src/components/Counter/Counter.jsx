@@ -21,10 +21,10 @@ const Counter = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto md:px-0 px-5 md:mt-0 mt-5">
+    <div className="max-w-7xl mx-auto md:mt-0 mt-5 md:px-10 px-2">
       <hr />
 
-      <div className="grid md:grid-cols-4 grid-cols-2 gap-11 py-20">
+      <div className="grid md:grid-cols-4 grid-cols-2 gap-10 py-10">
         {counters.map((counter, index) => (
           <SingleCounter key={index} counter={counter} />
         ))}

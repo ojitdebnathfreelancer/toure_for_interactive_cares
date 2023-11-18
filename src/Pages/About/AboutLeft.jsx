@@ -2,17 +2,17 @@ import aboutImage from "../../assets/images/about/about.jpg";
 
 const AboutLeft = () => {
   return (
-    <div className="relative">
+    <div className="xl:pl-10 lg:pl-16 md:pl-10 pl-10 relative">
       <img
         src={aboutImage}
         alt=""
-        className=" md:w-80 md:top-0 md:left-[40px] w-72 left-[50px] top-16 -rotate-12"
+        className="xl:h-96 lg:h-72 md:h-64 h-60 -rotate-12"
       />
       <div className="">
         <img
           src={aboutImage}
           alt=""
-          className="absolute md:top-48 md:left-60 md:w-80 w-72 left-[150px] top-40 "
+          className="absolute lg:h-72 md:h-64 h-60 xl:h-96 top-0 lg:left-48 md:left-40 left-32"
         />
       </div>
     </div>

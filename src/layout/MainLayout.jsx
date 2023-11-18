@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const MainLayout = ({ children }) => {
   const [isDestination, setIsDestination] = useState(false);
-
+  console.log(isDestination);
   return (
     <div className="flex flex-col min-h-screen justify-between">
       <div>
@@ -17,8 +17,8 @@ const MainLayout = ({ children }) => {
       <Footer />
 
       <div
-        className={`absolute duration-500 z-[1] left-0 w-full ${
-          isDestination ? "top-20" : "-top-[100%]"
+        className={`fixed duration-500 z-[99999] left-0 w-full ${
+          isDestination ? "md:top-20 top-14" : "-top-[110%]"
         }`}
       >
         <SearchDestination setIsDestination={setIsDestination} />

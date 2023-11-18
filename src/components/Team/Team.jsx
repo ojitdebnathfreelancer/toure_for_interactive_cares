@@ -74,7 +74,18 @@ const Team = () => {
           clickable: true,
         }}
         modules={[Pagination]}
-        className="mySwiper mt-11"
+        breakpoints={{
+          320: { slidesPerView: 2, spaceBetween: 20 },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 5,
+            spaceBetween: 30,
+          },
+        }}
+        className="mySwiper mt-11 md:px-10 px-2"
       >
         {teamInfo.map((team, index) => (
           <SwiperSlide key={index}>

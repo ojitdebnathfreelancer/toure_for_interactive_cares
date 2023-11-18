@@ -38,7 +38,7 @@ const Features = () => {
 
   return (
     <div className="bg-[#F7F8FA]">
-      <div className="py-20 max-w-7xl mx-auto md:px-0 px-5">
+      <div className=" max-w-7xl mx-auto md:px-10 px-5">
         {/* title */}
         <Title sectionName="Features" sectionTitle="Why Choose Us" />
 

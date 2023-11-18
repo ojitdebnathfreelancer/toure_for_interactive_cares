@@ -24,7 +24,7 @@ const NavBar = ({ setIsDestination }) => {
           <LoginButton setIsDestination={setIsDestination} />
         </div>
 
-        <SideBar isOpen={isOpen} />
+        <SideBar isOpen={isOpen} setIsDestination={setIsDestination} />
 
         <button
           onClick={() => setIsOpen((prv) => !prv)}

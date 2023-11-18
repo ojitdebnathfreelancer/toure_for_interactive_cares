@@ -11,7 +11,7 @@ const FeaturedTours = () => {
   }, []);
 
   return (
-    <div className="bg-primary2 py-20 mt-48">
+    <div className="bg-primary2 py-20 md:px-5 px-2 lg:mt-20 mt-10">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-white italic font-medium text-xl text-center">
           Tours
